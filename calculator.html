@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        
+        <title>Calculator</title>
+        <style>
+			html, body{
+				width: 99%;
+				height: 97%;
+			}
+			.uitkomst{
+				margin-top: 5%;
+				margin-left: 5%;
+				width: 80%;
+				height: 20%;
+			}
+			
+			#div{
+				width: 100%;
+				height: 15%;
+				background: red;
+				font-size: 2rem;
+				color: green;
+			}
+        </style>
+    </head>
+    <body>
+		<h1>Calculate</h1><br>
+		Numbers: <input type="text" value="1, 2, 5" name="invoer" id="invullen"><br><br>
+		Operation:
+		<select name="select" id="select">
+		  <option value="optellen">+</option>
+		  <option value="aftrekken">-</option>
+		  <option value="keer">*</option>
+		  <option value="delen">/</option>
+		</select><br><br>
+		<button onclick="bereken()">Count</button>
+		<br><br>
+		
+		<div id="div">
+			<div id="antwoord"> Resultaat: </div>
+		</div>
+		
+			
+ 		<script>
+			function bereken() {
+			   var arr = document.getElementById('invullen').value.split(",");
+			   var operations = {
+				 '+' : arr.reduce((a, b) => parseFloat(a) + parseFloat(b)),
+				 '-' : arr.reduce((a, b) => parseFloat(a) - parseFloat(b)),
+				 '*' : arr.reduce((a, b) => parseFloat(a) * parseFloat(b)),
+				 '/' : arr.reduce((a, b) => parseFloat(a) / parseFloat(b))
+			   }
+			   var antwoord = operations[document.getElementById('select').selectedOptions[0].text];
+
+			   document.getElementById('antwoord').innerHTML = "Resultaat: " + antwoord;
+			}
+		</script>
+		
+    </body>
+</html>
